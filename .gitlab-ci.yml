@@ -1,0 +1,52 @@
+default:
+  tags: [karleenr]
+
+stages:
+  - build
+  - clang
+  - test
+  - deploy
+
+build_stage:
+  stage: build
+  script:
+    - cd src/cat  
+    - make  
+    - cd ../grep 
+    - make  
+  artifacts:
+    paths:
+      - src/cat/s21_cat
+      - src/grep/s21_grep
+    expire_in: 30 days 
+  after_script:
+    - bash src/bot_telegram.sh
+
+clang_stage:
+  stage: clang
+  script:
+    - cd  src/cat 
+    - make clang
+    - cd  ../grep 
+    - make clang
+  after_script:
+    - bash src/bot_telegram.sh  
+
+test_stage:
+  stage: test
+  script:
+    - cd  src/cat 
+    - make test
+    - cd  ../grep 
+    - make test
+  after_script:
+    - bash src/bot_telegram.sh      
+
+deploy_stage:
+  stage: deploy
+  script:
+    - cd src && sh p5_script_copt.sh 
+  after_script:
+    - bash src/bot_telegram.sh    
+  when: manual
+  allow_failure: true
