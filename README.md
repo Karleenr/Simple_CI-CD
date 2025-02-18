@@ -1,4 +1,4 @@
-## Part 1. Setting up the gitlab-runner
+# Part 1. Setting up the gitlab-runner
 
 Установил образ Ubuntu 22.04 LTS
 
@@ -18,7 +18,7 @@
 
 Инструкция по установке: https://docs.gitlab.com/runner/install/linux-manually.html
 
-## Part 2. Building
+# Part 2. Building
 
 Написал этап для CI по сборке приложений из проекта C2_SimpleBashUtils.
 
@@ -55,7 +55,7 @@ after_script: - bash src/bot_telegram.sh
 
 ![Alt text](src/screenshots/p2.3.png)
 
-## Part 3. Codestyle test
+# Part 3. Codestyle test
 
 Написал этап для CI, который запускает скрипт кодстайла (clang-format).
 
@@ -77,7 +77,7 @@ after_script: - bash src/bot_telegram.sh
 
 ![Alt text](src/screenshots/p3.5.png)
 
-## Part 4. Integration tests
+# Part 4. Integration tests
 
 Написал этап для CI, который запустит интеграционные тесты.
 
@@ -99,7 +99,7 @@ after_script: - bash src/bot_telegram.sh
 
 Тоже самое, что и в Part2-Part3
 
-## Part 5. Deployment stage
+# Part 5. Deployment stage
 
 Поднял вторую виртуальную машину Ubuntu Server 22.04 LTS.
 
@@ -144,7 +144,7 @@ after_script: - bash src/bot_telegram.sh
 
 ![Alt text](src/screenshots/p5.11.png)
 
-## Part 6. Bonus. Notifications
+# Part 6. Bonus. Notifications
 
 Настрил уведомления об успешном/неуспешном выполнении пайплайна через бота в Telegram.
 
